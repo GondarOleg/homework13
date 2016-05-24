@@ -57,16 +57,7 @@ $(document).ready(function () {
         }
 
         if (allValid) {
-
-            var win = window.open('cookiesTable.html', '_self');
-            if (win) {
-                //Browser has allowed it to be opened
-                win.focus();
-            } else {
-                //Broswer has blocked it
-                alert('Please allow popups for this site');
-            }
-
+            $("#register_form").submit();
         }
 
     });

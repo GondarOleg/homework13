@@ -23,7 +23,7 @@ public class ErrorHandler extends HttpServlet {
 
     private void processError(HttpServletRequest request,
                               HttpServletResponse response) throws IOException {
-        // Analyze the servlet exception
+
         Throwable throwable = (Throwable) request
                 .getAttribute("javax.servlet.error.exception");
         Integer statusCode = (Integer) request
@@ -39,7 +39,7 @@ public class ErrorHandler extends HttpServlet {
             requestUri = "Unknown";
         }
 
-        // Set response content type
+
         response.setContentType("text/html");
 
         PrintWriter out = response.getWriter();
@@ -58,7 +58,7 @@ public class ErrorHandler extends HttpServlet {
         }
 
         out.write("<br><br>");
-        out.write("<a href=\"login.html\">Login Page</a>");
+        out.write("<a href=\"index.html\">Login Page</a>");
         out.write("</body></html>");
     }
 }

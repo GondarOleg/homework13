@@ -1,4 +1,4 @@
-package com.epam.servlets;
+package com.epam.filters;
 
 import java.io.IOException;
 
@@ -38,10 +38,10 @@ public class AuthFilter implements Filter{
 
         HttpSession session = req.getSession(false);
 
-        if(session == null && !(uri.endsWith("jsp") || uri.endsWith("Login") || uri.endsWith("registerForm.html"))){
+        if(session == null && uri.endsWith("cookiesTable.html")){
 
             logger.error("Unauthorized access request");
-            res.sendRedirect("index.jsp");
+            res.sendRedirect("index.html");
         }else{
 
             chain.doFilter(request, response);

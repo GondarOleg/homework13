@@ -1,8 +1,3 @@
-<%@ page language="java"
-contentType="text/html; charset=utf-8"
-pageEncoding="utf-8"
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,10 +13,10 @@ pageEncoding="utf-8"
 
 <body>
 
-<form action="/Login" id="Main page" class="common_form" method="post">
+<form action="/Login" id="mainpage" class="common_form" method="post">
     <ul>
         <li>
-            <h2>Fortune cookies login page (login or register)</h2>
+            <h2>Fortune cookies</h2>
 
         </li>
         <li>
@@ -40,10 +35,7 @@ pageEncoding="utf-8"
             </a>
         </li>
         <li>
-            <a href="cookieMessage.html">
-                <button class="submit" type="button">Get cookie</button>
-            </a>
-
+            <button id="getcookie" class="submit" value="Cookie" formaction="Cookie">Get cookie</button>
         </li>
         <li id="errors">
 

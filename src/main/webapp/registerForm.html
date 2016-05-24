@@ -10,7 +10,7 @@
 
 <body>
 
-<form class="common_form" action="" method="post" name="contact_form">
+<form id="register_form" class="common_form" action="Register" method="post" name="contact_form">
     <div class="errors"></div>
     <ul>
         <li>
@@ -36,18 +36,10 @@
             <label for="email">* email:</label>
             <input id="email" type="" name="email" placeholder="Enter email" required>
         </li>
-        <li>
-            <label> Firstname: </label>
-            <input type="text" name="Firstname" placeholder="Enter Firstname">
-        </li>
-        <li>
-            <label> Lasttname: </label>
-            <input type="text" name="Lastname" placeholder="Enter Lastname">
-        </li>
 
         <li>
-            <button id="register" class="submit" type="submit">Register</button>
-            <a href="index.jsp">
+            <button id="register" class="submit" type="submit" value="Register">Register</button>
+            <a href="index.html">
                 <button class="submit" type="button">Back to main page</button>
             </a>
         </li>

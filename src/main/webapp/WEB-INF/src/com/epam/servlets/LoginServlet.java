@@ -18,25 +18,21 @@ public class LoginServlet extends HttpServlet {
 
     static Logger logger = Logger.getLogger(LoginServlet.class);
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("name");
         String password = request.getParameter("password");
         logger.error(request.getParameter("name"));
 
-
-
-           // Connection con = (Connection) getServletContext().getAttribute("DBConnection");
-
+        Connection con = (Connection) getServletContext().getAttribute("DBConnection");
             try {
-                Class.forName("org.h2.Driver");
-                Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "password");
+
                 PreparedStatement ps = null;
                 ResultSet rs = null;
                 ps = con.prepareStatement("select username, useremail from \"Fortune cookies\".USERS  where username=? and userpassword=?");
                 ps.setString(1, username);
                 ps.setString(2, password);
                 rs = ps.executeQuery();
-                logger.info(rs.getString(1));
+
                 if(rs != null && rs.next()){
 
                     logger.info("User found with details="+rs.getString("username"));
@@ -45,15 +41,15 @@ public class LoginServlet extends HttpServlet {
                     session.setAttribute("User", username);
                     response.sendRedirect("cookiesTable.html");
                 }else{
-                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/registerForm.html");
+                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.html");
                     PrintWriter out= response.getWriter();
 
                     logger.error("User not found with username="+ username);
 
                     rd.include(request, response);
-                    out.println("<font color=red>No user found with given username, please register first.</font>");
+                    out.println("<font color=red>No user found with given username and password, try again or register first.</font>");
                 }
-            } catch ( SQLException | ClassNotFoundException e) {
+            } catch ( SQLException e) {
                 e.printStackTrace();
 
                 logger.error("Database connection problem");

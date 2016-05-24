@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     $("#login-button").click(function (e) {
         var allValid = true;
 
@@ -30,16 +31,7 @@ $(document).ready(function () {
             allValid = false;
         }
         if (allValid) {
-
-            var win = window.open('/Login', '_self');
-            if (win) {
-                //Browser has allowed it to be opened
-                win.focus();
-            } else {
-                //Broswer has blocked it
-                alert('Please allow popups for this site');
-            }
-
+        $("#mainpage").submit();
         }
 
     });
